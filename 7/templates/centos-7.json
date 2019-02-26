@@ -1,0 +1,47 @@
+{
+  "variables": {
+    "PLAN": "",
+    "GITREPO": "",
+    "GITBRANCH": ""
+  },
+  "builders": [
+    {
+      "type": "docker",
+      "image": "centos:7",
+      "export_path": "image-{{user `plan`}}.tar"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": "yum -y update && yum -y install audit bash bash-completion ca-certificates chrony cloud-init cloud-utils-growpart cron curl device-mapper-multipath dhclient ethstatus hwdata ioping iotop iperf iscsi-initiator-utils keyutils locate logrotate make mdadm mg microcode_ctl mtr net-tools NetworkManager-team NetworkManager-tui nmap-ncat ntp ntpdate openssh-clients openssh-server openssl parted pciutils redhat-lsb-core rsync rsyslog screen socat sudo sysstat systemd tar tcpdump teamd tmux traceroute tuned vim wget yum-plugin-ovl microcode linux-firmware grub2-efi grub2 efibootmgr"
+    },
+    {
+      "type": "shell",
+      "inline": "echo packet-packer-dracut; KVER=`rpm -qa | grep kernel | head -1 | sed 's/kernel-//g'`; echo 'No host-only for $KVER'; dracut -v --kver $KVER --no-host-only -f /boot/initramfs-$KVER.img $KVER; ls -al /boot/initramfs*"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "shell-local",
+      "inline": "echo packet-packer-targz; mkdir -p /tmp/packertar-{{user `plan`}}-{{timestamp}}; tar -xf image-{{user `plan`}}.tar -C /tmp/packertar-{{user `plan`}}-{{timestamp}}; tar -czf image.tar.gz -C /tmp/packertar-{{user `plan`}}-{{timestamp}} .; rm -rf /tmp/packertar-{{user `plan`}}-{{timestamp}};"
+    },
+    {
+      "type": "shell-local",
+      "environment_vars": [
+        "GITREPO=git@github.com:packethost/packet-images.git",
+        "GITBRANCH=debian9",
+	"PLAN={{user `plan`}}",
+        "OS={{user `os`}}",
+	"FAC={{user `fac`}}",
+	"MODE={{user `mode`}}"
+      ],
+      "execute_command": [
+        "bash",
+        "-c",
+        "{{.Vars}} {{.Script}}"
+      ],
+      "script": "./scripts/entrypoint.sh"
+    }
+  ]
+}

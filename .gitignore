@@ -1,0 +1,7 @@
+device.list
+image.sha
+image.tar
+image.tar.gz
+initrd.tar.gz
+kernel.tar.gz
+modules.tar.gz
