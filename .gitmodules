@@ -1,0 +1,3 @@
+[submodule "tools/packet-packer"]
+	path = tools/packet-packer
+	url = https://github.com/packethost/packet-packer.git
