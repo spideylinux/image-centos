@@ -11,7 +11,7 @@ pipeline:
       - docker build -t image-ubuntu-test-env --build-arg packet_api_token="$PACKET_API_TOKEN" --build-arg packer_deploy_key="$PACKER_DEPLOY_KEY" tools/packet-packer/ci
       - mkdir build
       - touch build/image-ubuntu-test-env
-      - ln -s ../9 build/9
+      - ln -s ../7 build/7
       - ln -s ../testing build/testing
       - ln -s ../tools build/tools
     secrets:
@@ -25,104 +25,104 @@ pipeline:
     group: ci1
     image: image-ubuntu-test-env
     commands:
-      - ./tools/packet-packer/scripts/template-validate 9/templates 
+      - ./tools/packet-packer/scripts/template-validate 7/templates 
 
-  packer_debian9_t1small:
+  packer_centos7_t1small:
     group: ci1
     image: image-ubuntu-test-env
     commands:
-      - mkdir -p build/packer_debian9_t1small
-      - cd build/packer_debian9_t1small
+      - mkdir -p build/packer_centos7_t1small
+      - cd build/packer_centos7_t1small
       - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
-      - packer build -var 'plan=t1.small.x86' -var 'fac=sjc1' -var 'os=debian_9' -var 'mode=install' ../9/templates/debian-9.json
+      - packer build -var 'plan=t1.small.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  packer_debian9_c1small:
+  packer_centos7_c1small:
     group: ci1
     image: image-ubuntu-test-env
     commands:
-      - mkdir -p build/packer_debian9_c1small
-      - cd build/packer_debian9_c1small
+      - mkdir -p build/packer_centos7_c1small
+      - cd build/packer_centos7_c1small
       - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
-      - packer build -var 'plan=c1.small.x86' -var 'fac=sjc1' -var 'os=debian_9' -var 'mode=install' ../9/templates/debian-9.json
+      - packer build -var 'plan=c1.small.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  packer_debian9_x1small:
+  packer_centos7_x1small:
     group: ci1
     image: image-ubuntu-test-env
     commands:
-      - mkdir -p build/packer_debian9_x1small
-      - cd build/packer_debian9_x1small
+      - mkdir -p build/packer_centos7_x1small
+      - cd build/packer_centos7_x1small
       - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
-      - packer build -var 'plan=x1.small.x86' -var 'fac=sjc1' -var 'os=debian_9' -var 'mode=install' ../9/templates/debian-9.json
+      - packer build -var 'plan=x1.small.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  packer_debian9_c1xlarge:
+  packer_centos7_c1xlarge:
     group: ci1
     image: image-ubuntu-test-env
     commands:
-      - mkdir -p build/packer_debian9_c1xlarge
-      - cd build/packer_debian9_c1xlarge
+      - mkdir -p build/packer_centos7_c1xlarge
+      - cd build/packer_centos7_c1xlarge
       - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
-      - packer build -var 'plan=c1.xlarge.x86' -var 'fac=sjc1' -var 'os=debian_9' -var 'mode=install' ../9/templates/debian-9.json
+      - packer build -var 'plan=c1.xlarge.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  packer_debian9_c2medium:
+  packer_centos7_c2medium:
     group: ci1
     image: image-ubuntu-test-env
     commands:
-      - mkdir -p build/packer_debian9_c2medium
-      - cd build/packer_debian9_c2medium
+      - mkdir -p build/packer_centos7_c2medium
+      - cd build/packer_centos7_c2medium
       - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
-      - packer build -var 'plan=c2.medium.x86' -var 'fac=sjc1' -var 'os=debian_9' -var 'mode=install' ../9/templates/debian-9.json
+      - packer build -var 'plan=c2.medium.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  packer_debian9_m1xlarge:
+  packer_centos7_m1xlarge:
     group: ci1
     image: image-ubuntu-test-env
     commands:
-      - mkdir -p build/packer_debian9_m1xlarge
-      - cd build/packer_debian9_m1xlarge
+      - mkdir -p build/packer_centos7_m1xlarge
+      - cd build/packer_centos7_m1xlarge
       - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
-      - packer build -var 'plan=m1.xlarge.x86' -var 'fac=sjc1' -var 'os=debian_9' -var 'mode=install' ../9/templates/debian-9.json
+      - packer build -var 'plan=m1.xlarge.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  packer_debian9_m2xlarge:
+  packer_centos7_m2xlarge:
     group: ci1
     image: image-ubuntu-test-env
     commands:
-      - mkdir -p build/packer_debian9_m2xlarge
-      - cd build/packer_debian9_m2xlarge
+      - mkdir -p build/packer_centos7_m2xlarge
+      - cd build/packer_centos7_m2xlarge
       - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
-      - packer build -var 'plan=m2.xlarge.x86' -var 'fac=sjc1' -var 'os=debian_9' -var 'mode=install' ../9/templates/debian-9.json
+      - packer build -var 'plan=m2.xlarge.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  packer_debian9_s1large:
+  packer_centos7_s1large:
     group: ci1
     image: image-ubuntu-test-env
     commands:
-      - mkdir -p build/packer_debian9_s1large
-      - cd build/packer_debian9_s1large
+      - mkdir -p build/packer_centos7_s1large
+      - cd build/packer_centos7_s1large
       - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
-      - packer build -var 'plan=s1.large.x86' -var 'fac=sjc1' -var 'os=debian_9' -var 'mode=install' ../9/templates/debian-9.json
+      - packer build -var 'plan=s1.large.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-  packer_debian9_x2xlarge:
+  packer_centos7_x2xlarge:
     group: ci1
     image: image-ubuntu-test-env
     commands:
-      - mkdir -p build/packer_debian9_x2xlarge
-      - cd build/packer_debian9_x2xlarge
+      - mkdir -p build/packer_centos7_x2xlarge
+      - cd build/packer_centos7_x2xlarge
       - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
-      - packer build -var 'plan=x2.xlarge.x86' -var 'fac=sjc1' -var 'os=debian_9' -var 'mode=install' ../9/templates/debian-9.json
+      - packer build -var 'plan=x2.xlarge.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
