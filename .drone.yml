@@ -49,3 +49,80 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+  packer_centos7_x1small:
+    group: ci1
+    image: image-ubuntu-test-env
+    commands:
+      - mkdir -p build/packer_centos7_x1small
+      - cd build/packer_centos7_x1small
+      - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
+      - packer build -var 'plan=x1.small.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  packer_centos7_c1xlarge:
+    group: ci1
+    image: image-ubuntu-test-env
+    commands:
+      - mkdir -p build/packer_centos7_c1xlarge
+      - cd build/packer_centos7_c1xlarge
+      - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
+      - packer build -var 'plan=c1.xlarge.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  packer_centos7_c2medium:
+    group: ci1
+    image: image-ubuntu-test-env
+    commands:
+      - mkdir -p build/packer_centos7_c2medium
+      - cd build/packer_centos7_c2medium
+      - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
+      - packer build -var 'plan=c2.medium.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  packer_centos7_m1xlarge:
+    group: ci1
+    image: image-ubuntu-test-env
+    commands:
+      - mkdir -p build/packer_centos7_m1xlarge
+      - cd build/packer_centos7_m1xlarge
+      - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
+      - packer build -var 'plan=m1.xlarge.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  packer_centos7_m2xlarge:
+    group: ci1
+    image: image-ubuntu-test-env
+    commands:
+      - mkdir -p build/packer_centos7_m2xlarge
+      - cd build/packer_centos7_m2xlarge
+      - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
+      - packer build -var 'plan=m2.xlarge.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  packer_centos7_s1large:
+    group: ci1
+    image: image-ubuntu-test-env
+    commands:
+      - mkdir -p build/packer_centos7_s1large
+      - cd build/packer_centos7_s1large
+      - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
+      - packer build -var 'plan=s1.large.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  packer_centos7_x2xlarge:
+    group: ci1
+    image: image-ubuntu-test-env
+    commands:
+      - mkdir -p build/packer_centos7_x2xlarge
+      - cd build/packer_centos7_x2xlarge
+      - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
+      - packer build -var 'plan=x2.xlarge.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
