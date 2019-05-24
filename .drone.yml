@@ -122,7 +122,7 @@ pipeline:
       - mkdir -p build/packer_centos7_s1large
       - cd build/packer_centos7_s1large
       - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
-      - packer build -var 'plan=s1.large.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
+      - packer build -var 'plan=s1.large.x86' -var 'fac=ewr1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
