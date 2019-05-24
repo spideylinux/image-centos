@@ -126,3 +126,13 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+  packer_centos7_x2xlarge:
+    group: ci1
+    image: image-ubuntu-test-env
+    commands:
+      - mkdir -p build/packer_centos7_x2xlarge
+      - cd build/packer_centos7_x2xlarge
+      - ln -s ../../scripts scripts; ln -s ../../tools tools; ln -s ../../tools/packet-packer packet-packer
+      - packer build -var 'plan=x2.xlarge.x86' -var 'fac=sjc1' -var 'os=centos_7' -var 'mode=install' ../7/templates/centos-7.json
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
