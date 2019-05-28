@@ -39,7 +39,7 @@
       "type": "shell-local",
       "environment_vars": [
         "GITREPO=git@github.com:packethost/packet-images.git",
-        "GITBRANCH=centos7",
+        "GITBRANCH={{user `os`}}-{{user `plan`}}-{{timestamp}}",
 	"PLAN={{user `plan`}}",
         "OS={{user `os`}}",
 	"FAC={{user `fac`}}",
