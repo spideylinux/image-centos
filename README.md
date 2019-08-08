@@ -12,7 +12,7 @@ The templates make use of the docker "builder" in Packer to create a base image 
 There is only a small list of deps required to run image builds, but we recommend a dedicated
 machine or VM for this purpose simply to keep things isolated. This repo makes use of [git-lfs](https://git-lfs.github.com/) for installation asset storage.
 
- - [Packer](packer.io)
+ - [Packer](http://www.packer.io) - version 1.3.3 and up
  - [packet-cli](https://github.com/packethost/packet-cli) - optional
  - [git-lfs](https://github.com/git-lfs/git-lfs) - optional
  - Linux host on top of CentOS7 / Ubuntu 16
