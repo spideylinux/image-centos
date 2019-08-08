@@ -1,6 +1,6 @@
 # Packet CentOS Image
 
-This repository contains Packer.io templates for building CentOS that we provision at Packet. **This is currently a work in progress!**
+This repository contains Packer.io templates for building CentOS that we provision at Packet. **This is currently a work in progress! Not all options are available publicly at this time.**
 
 ### Supported CentOS versions
 - CentOS 7 
@@ -13,8 +13,8 @@ There is only a small list of deps required to run image builds, but we recommen
 machine or VM for this purpose simply to keep things isolated. This repo makes use of [git-lfs](https://git-lfs.github.com/) for installation asset storage.
 
  - [Packer](packer.io)
- - [packet-cli](https://github.com/packethost/packet-cli)
- - [git-lfs](https://github.com/git-lfs/git-lfs)
+ - [packet-cli](https://github.com/packethost/packet-cli) - optional
+ - [git-lfs](https://github.com/git-lfs/git-lfs) - optional
  - Linux host on top of CentOS7 / Ubuntu 16
 
 ### Example image build
