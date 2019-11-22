@@ -15,7 +15,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": "yum -y update && yum -y install audit bash bash-completion ca-certificates chrony cloud-init cloud-utils-growpart curl device-mapper-multipath dhclient hwdata iotop iscsi-initiator-utils keyutils logrotate make mdadm microcode_ctl mtr net-tools NetworkManager-team NetworkManager-tui nmap-ncat openssh-clients openssh-server openssl parted pciutils redhat-lsb-core rsync rsyslog socat sudo sysstat systemd tar tcpdump teamd tmux traceroute tuned vim wget linux-firmware grub2-efi grub2 efibootmgr dracut-config-generic irqbalance iputils"
+      "inline": "yum -y update && yum -y install audit bash bash-completion ca-certificates chrony cloud-init cloud-utils-growpart curl device-mapper-multipath dhclient hwdata iotop iscsi-initiator-utils keyutils logrotate make mdadm microcode_ctl mtr net-tools NetworkManager-team NetworkManager-tui nmap-ncat openssh-clients openssh-server openssl parted pciutils redhat-lsb-core rsync rsyslog socat sudo systemd tar tcpdump teamd tmux traceroute tuned vim wget linux-firmware grub2-efi grub2 efibootmgr dracut-config-generic irqbalance iputils"
     },
     {
       "type": "shell",
